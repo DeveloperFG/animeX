@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
+import { OneSignal } from 'react-native-onesignal'
+
+import Toast from 'react-native-toast-message';
+
+OneSignal.initialize("f42fabcd-3a92-4ac0-adc3-4e5e447b61b1")
+OneSignal.Notifications.requestPermission(true)
+
+import { Routes } from './src/routes';
+
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar
+        barStyle='light-content'
+        backgroundColor='transparent'
+        translucent
+      />
+      <Routes/>
+      <Toast/>
+    </>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
